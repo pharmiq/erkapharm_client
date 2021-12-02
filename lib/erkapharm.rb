@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "erkapharm/version"
+require_relative 'erkapharm/version'
 
 module Erkapharm
   class Error < StandardError; end

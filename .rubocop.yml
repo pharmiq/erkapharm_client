@@ -2,5 +2,17 @@ AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
 
+Style/Documentation:
+  Enabled: false
+
 Layout/LineLength:
-  Max: 120
+  Max: 100
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma

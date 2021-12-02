@@ -11,5 +11,9 @@ require 'erkapharm'
 # require "pry"
 # Pry.start
 
+Erkapharm.configure do |config|
+  config.login = ENV['LOGIN']
+  config.password = ENV['PASSWORD']
+end
 require 'irb'
 IRB.start(__FILE__)

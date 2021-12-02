@@ -2,15 +2,23 @@ PATH
   remote: .
   specs:
     erkapharm (0.1.0)
+      faraday (~> 0.9)
+      hashie (~> 3.4)
+      rack (>= 1.5, < 3.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
     diff-lcs (1.4.4)
+    faraday (0.17.4)
+      multipart-post (>= 1.2, < 3)
+    hashie (3.6.0)
+    multipart-post (2.1.1)
     parallel (1.21.0)
     parser (3.0.3.1)
       ast (~> 2.4.1)
+    rack (2.2.3)
     rainbow (3.0.0)
     rake (13.0.6)
     regexp_parser (2.1.1)

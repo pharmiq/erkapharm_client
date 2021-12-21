@@ -6,6 +6,7 @@ require 'hashie'
 require 'rack/utils'
 require 'rack/request'
 require 'rack/response'
+require 'securerandom'
 
 require_relative 'erkapharm/errors'
 require_relative 'erkapharm/configurable'

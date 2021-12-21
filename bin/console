@@ -14,6 +14,21 @@ require 'erkapharm'
 Erkapharm.configure do |config|
   config.login = ENV['LOGIN']
   config.password = ENV['PASSWORD']
+  config.api_endpoint = 'http://ws-dev.erkapharm.com:8990/ecom_test/hs/sber_strah/'
 end
+request = Erkapharm::Requests::Appointment.new do |a|
+  a.request_sum_allow = 5000
+  a.client_name = 'Иванов Иван Иванович'
+  a.client_tel = '+79013328246'
+  a.basket = [
+    Erkapharm::Requests::Basket.new do |b|
+      b.row_id = 1
+      b.doctors_appointment = 'Аспирин 1 таб в день 1 месяц'
+      b.confirmed = true
+      b.sum_allow = 5000
+    end,
+  ]
+end
+_response = Erkapharm.client.create_appointment(request)
 require 'irb'
 IRB.start(__FILE__)

@@ -8,7 +8,7 @@ module Erkapharm
   class Client
     include Configurable
 
-    CREATE_APPOINTMENT_PATH = 'sber_strah/doctor_appointment'
+    CREATE_APPOINTMENT_PATH = 'doctor_appointment'
 
     def initialize(options = {})
       CONFIGURATION_OPTIONS.each do |attribute|

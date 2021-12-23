@@ -5,23 +5,19 @@ module Erkapharm
     class App
       OK_STATUS_CODE = 200
 
-      attr_reader :logger, :process_notification
+      attr_reader :processor
 
-      # @param logger [Logger]
-      #
-      def initialize(logger = Erkapharm.logger, &process_notification)
-        @logger = logger
-        @process_notification = process_notification
+      def initialize(processor)
+        @processor = processor
       end
 
       def call(env)
         request = Rack::Request.new(env)
         body = JSON.parse(request.body.read)
-        logger.debug("Incoming request: #{body}")
         notification = Models::Appointment.new(body)
-        code, message = process_notification.call(notification)
+        code, message = processor.call(notification, request)
         body = { code: code, message: message }.to_json
-        Rack::Response.new(body, OK_STATUS_CODE)
+        Rack::Response.new(body, OK_STATUS_CODE).to_a
       end
     end
   end

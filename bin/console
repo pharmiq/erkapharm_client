@@ -21,7 +21,7 @@ request = Erkapharm::Requests::Appointment.new do |a|
   a.client_name = 'Иванов Иван Иванович'
   a.client_tel = '+79013328246'
   a.basket = [
-    Erkapharm::Requests::Basket.new do |b|
+    Erkapharm::Requests::Medication.new do |b|
       b.row_id = 1
       b.doctors_appointment = 'Аспирин 1 таб в день 1 месяц'
       b.confirmed = true

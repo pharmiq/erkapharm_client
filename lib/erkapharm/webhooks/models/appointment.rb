@@ -13,7 +13,7 @@ module Erkapharm
         property :mnn
       end
 
-      class Basket < Base
+      class Medication < Base
         property :rowId, from: :row_id
         property :qtty_sold, from: :qttySold
         property :sum_sold, from: :sumSold
@@ -29,7 +29,7 @@ module Erkapharm
         property :order_sum, from: :orderSum
         property :order_discount, from: :orderDiscount
         property :order_discount_percent, from: :orderDiscountPercent
-        property :basket, coerce: Array[Basket]
+        property :basket, coerce: Array[Medication]
       end
     end
   end

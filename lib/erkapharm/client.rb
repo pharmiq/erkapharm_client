@@ -57,7 +57,7 @@ module Erkapharm
     end
 
     def setup_log_filters!(connection)
-      connection.response(:logger, logger) do |logger|
+      connection.response(:logger, logger, bodies: true) do |logger|
         logger.filter(/(Authorization: )([^&]+)/, '\1[FILTERED]')
       end
     end

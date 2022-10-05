@@ -1,12 +1,19 @@
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3
   NewCops: enable
+  Exclude:
+    - bin/rspec
+    - bin/rubocop
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
-
-Layout/LineLength:
-  Max: 100
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
@@ -16,3 +23,6 @@ Style/TrailingCommaInHashLiteral:
 
 Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
+
+Layout/LineLength:
+  Max: 100

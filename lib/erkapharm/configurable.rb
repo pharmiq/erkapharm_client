@@ -28,7 +28,7 @@ module Erkapharm
     end
 
     def options
-      CONFIGURATION_OPTIONS.map { |attr| [attr, send(attr)] }.to_h
+      CONFIGURATION_OPTIONS.to_h { |attr| [attr, send(attr)] }
     end
 
     def same_options?(options)

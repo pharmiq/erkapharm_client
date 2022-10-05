@@ -12,8 +12,8 @@ require 'erkapharm'
 # Pry.start
 
 Erkapharm.configure do |config|
-  config.login = ENV['LOGIN']
-  config.password = ENV['PASSWORD']
+  config.login = ENV.fetch('LOGIN', nil)
+  config.password = ENV.fetch('PASSWORD', nil)
   config.api_endpoint = 'http://ws-dev.erkapharm.com:8990/ecom_test/hs/sber_strah/'
 end
 request = Erkapharm::Requests::Appointment.new do |a|

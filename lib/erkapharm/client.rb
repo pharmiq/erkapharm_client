@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'client/models'
-require_relative 'client/middlewares/handle_connection_error'
-require_relative 'client/middlewares/handle_http_error'
 
 module Erkapharm
   class Client
@@ -48,16 +46,16 @@ module Erkapharm
     end
 
     def setup_auth!(connection)
-      connection.basic_auth(login, password)
+      connection.request(:authorization, :basic, login, password)
     end
 
     def setup_error_handling!(connection)
-      connection.use(:erkapharm_handle_connection_error)
-      connection.response(:erkapharm_handle_http_error)
+      connection.response(:raise_error)
     end
 
     def setup_log_filters!(connection)
-      connection.response(:logger, logger, bodies: true) do |logger|
+      options = { headers: true, bodies: true, log_level: :debug }
+      connection.response(:logger, logger, options) do |logger|
         logger.filter(/(Authorization: )([^&]+)/, '\1[FILTERED]')
       end
     end
@@ -71,13 +69,6 @@ module Erkapharm
         request.url(resource)
         request.headers.merge!(headers)
         request.body = params.to_json
-      end
-    end
-
-    def http_get(resource, params = {})
-      connection.get do |request|
-        request.url(resource)
-        request.params.update(params) unless params.empty?
       end
     end
   end

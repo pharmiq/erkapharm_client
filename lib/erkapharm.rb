@@ -8,11 +8,9 @@ require 'rack/request'
 require 'rack/response'
 require 'securerandom'
 
-require_relative 'erkapharm/errors'
 require_relative 'erkapharm/configurable'
 require_relative 'erkapharm/client'
 require_relative 'erkapharm/webhooks'
-require_relative 'erkapharm/version'
 
 module Erkapharm
   class << self
